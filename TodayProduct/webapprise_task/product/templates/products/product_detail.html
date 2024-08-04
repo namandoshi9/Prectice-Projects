@@ -1,0 +1,57 @@
+<!-- products/templates/products/product_detail.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">ProductShop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Order</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'product-list' %}">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            {% if user.is_authenticated %}
+            <form class="form-inline my-2 my-lg-0 ml-auto" action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger ml-2">Logout</button>
+            </form>
+            {% else %}
+            <form class="form-inline my-2 my-lg-0 ml-auto" action="{% url 'login' %}" method="get">
+                <button type="submit" class="btn btn-outline-success">Login</button>
+            </form>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>{{ product.name }}</h2>
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+        <p>{{ product.description }}</p>
+        <p>Sales Price: ${{ product.sales_price }}</p>
+        <p>Discount: {{ product.discount }}%</p>
+        <a href="{% url 'product-list' %}" class="btn btn-primary">Back to Products</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

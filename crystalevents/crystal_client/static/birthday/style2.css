@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+.container1 {
+    margin: 150px auto;
+    max-width: 960px;
+}
+
+body {
+    background: #fafafa;
+}
+
+
+ul {
+    padding-inline-start: 20px;
+    
+}
+
+.custom-select {
+    width: 300px;
+    padding: 15px;
+    padding-left: 10px;
+    background-color: #fff;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 10px 0 rgb(0, 0, 0, 0.25);
+    cursor: pointer;
+    /* margin: 10px; */
+}
+.treeSelectionborder{
+    width: 100px;
+}

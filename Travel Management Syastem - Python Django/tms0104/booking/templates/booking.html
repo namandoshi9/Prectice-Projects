@@ -1,0 +1,242 @@
+{% load static %}
+{% include "header.html" %}
+
+<style>
+    /* Custom CSS for the table */
+    .table-container {
+        margin-top: 50px;
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .table th,
+    .table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+        color: #333;
+        text-transform: uppercase;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f0f0f0;
+    }
+
+    .table tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    .table-btn {
+        background-color: #7AB730;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .table-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive table */
+    @media (max-width: 768px) {
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+        }
+
+        .table {
+            width: auto;
+        }
+    }
+</style>
+
+<!-- Booking Data Table -->
+<div class="container-fluid">
+    <div class="container table-container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Destination</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for bookings in bookings %}
+                    <tr>
+                        <td>{{bookings.id}}</td>
+                        <td>{{bookings.username}}</td>
+                        <td>{{bookings.create_te}}</td>
+                        <td>{{bookings.destination}}</td>
+                        <td>{{bookings.status}}</td>
+                        <td>
+                            {% if bookings.status == 'Pending' %}
+                                <button class="table-btn" onclick="bookNow()">Book</button>
+                            {% else %}
+                                <button class="table-btn" onclick="showDetails(1)">View</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                    <!-- Add more rows for additional bookings -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Booking Data Table End -->
+
+
+<!-- Booking Details Modal -->
+<div class="modal fade" id="bookingDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>ID:</strong> <span id="detailId"></span></p>
+                <p><strong>Name:</strong> <span id="detailName"></span></p>
+                <p><strong>Date:</strong> <span id="detailDate"></span></p>
+                <p><strong>Destination:</strong> <span id="detailDestination"></span></p>
+                <p><strong>Status:</strong> <span id="detailStatus"></span></p>
+                <!-- Additional Details -->
+                <p><strong>Extra Details:</strong> <span id="extraDetails"></span></p>
+                <p><strong>Extra Details:</strong> <span id="extraDetails"></span></p>
+                <p><strong>Extra Details:</strong> <span id="extraDetails"></span></p>
+                <p><strong>Extra Details:</strong> <span id="extraDetails"></span></p>
+                <p><strong>Extra Details:</strong> <span id="extraDetails"></span></p>
+                <!-- Invoice Icon -->
+                <button class="btn btn-primary" onclick="generateInvoice()">Generate Invoice</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Booking Details Modal End -->
+
+<!-- Booking Form Modal -->
+<div class="modal fade" id="bookingFormModal" tabindex="-1" aria-labelledby="bookingFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingFormModalLabel">Book Now</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="username">Name</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" class="form-control" id="destination" placeholder="Enter destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date">
+                    </div>
+                    <!-- Add more fields as needed -->
+                    <button type="submit" class="btn btn-primary">Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Booking Form Modal End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript for Modal -->
+<script>
+    function showDetails(bookingId) {
+        // Dummy data - replace with actual data retrieval logic
+        var booking = {
+            id: booking_id,
+            name: "John Doe",
+            date: "2024-03-08",
+            destination: "New York",
+            status: "Confirmed",
+            extraDetails: "Additional details about the booking"
+            // Add more details here as needed
+        };
+
+        // Update details in the modal
+        document.getElementById("detailId").textContent = booking.id;
+        document.getElementById("detailName").textContent = booking.name;
+        document.getElementById("detailDate").textContent = booking.date;
+        document.getElementById("detailDestination").textContent = booking.destination;
+        document.getElementById("detailStatus").textContent = booking.status;
+        document.getElementById("extraDetails").textContent = booking.extraDetails;
+
+        // Show the modal
+        $('#bookingDetailsModal').modal('show');
+    }
+
+    function bookNow() {
+        $('#bookingFormModal').modal('show');
+    }
+
+    function generateInvoice() {
+        // Function to generate invoice
+        // You can implement the logic here
+        alert('Invoice generated!');
+    }
+</script>
+
+<!-- Template Javascript -->
+<script src="{%static 'js/main.js' %}"></script>
+</body>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{%static 'lib/easing/easing.min.js"></script>
+<script src="{%static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{%static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+<script src="{%static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+<script src="{%static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<!-- Contact Javascript File -->
+<script src="{%static 'mail/jqBootstrapValidation.min.js' %}"></script>
+<script src="{%static 'mail/contact.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{%static 'js/main.js' %}"></script>
+
+</html>

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+/* Coding With Nick */
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+.header{
+    text-align: center;
+    padding: 32px;
+}
+.header h1{
+    font-family: 'Open Sans', sans-serif';
+    /* font-size: 50px; */
+    /* margin-top: 10px; */
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    /* padding: 0px 10px 100px 10px; */
+}
+.column{
+    flex: 25%;
+    max-width: 25%;
+}
+.img-hover-zoom{
+    height: auto;
+    overflow: hidden;
+    border: 5px solid #ffff;
+}
+.img-hover-zoom img{
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition:  transform .5s ease;
+}
+.img-hover-zoom:hover img{
+    transform: scale(1.5);
+}
+
+@media screen and (max-width: 800px) {
+    .column{
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .column{
+        flex: 100%;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="/static/Registration Form/style.css">
+
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Crystal events details </title>
+</head>
+
+<body>
+    <div class="container">
+        <header>Crystal Event</header>
+        
+
+        <form method="post" action="{% url 'birthday' %}">
+            {% csrf_token %}
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Event Details</span>
+
+                    <div class="fields">
+                
+                        <div class="input-field">
+                            <label>Date of Event</label>
+                            <input type="date" placeholder="Enter birth date" name="date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>City</label>
+                            <select name="ecity" required>
+                                <option disabled selected>Select city</option>
+                                <option value="ahemdabad">Ahemdabad</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Location</label>
+                            <input type="text" name="eloc" placeholder="Enter event location" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Asstimated Guests</label>
+                            <select name="guests" required>
+                                <option disabled selected>Select no of guests</option>
+                                <option>10</option>
+                                <option>30</option>
+                                <option>50</option>
+                                <option>100</option>
+                                <option>130</option>
+                                <option>150</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Per Person Budget</label>
+                            <select name="budget" required>
+                                <option disabled selected>Select Budget</option>
+                                <option>100-300</option>
+                                <option>300-500</option>
+                                <option>500-1000</option>
+                            </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Time Slot</label>
+                            <select name="ts" required>
+                                <option disabled selected>Select time</option>
+                                <option>Morning</option>
+                                <option>Noon</option>
+                                <option>Evening</option>
+                                <option>Night</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="Enter your email" required>
+                        </div>
+
+
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select name="gen" required>
+                                <option disabled selected>Select gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Date of Birth</label>
+                            <input type="date" name="udate" placeholder="Enter birth date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Alternative Mobile No</label>
+                            <input type="text" name="no" placeholder="Enter alternative number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>City</label>
+                            <select name="ucity" required>
+                                <option disabled selected>Select city</option>
+                                <option value="ahemdabad">Ahemdabad</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Address</label>
+                            <input type="text" name="add" placeholder="Enter your address" required>
+                        </div>
+
+                    </div>
+
+                    <button class="nextBtn" type="submit">
+                        <span class="btnText">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+               
+            </div>
+            
+        </form>
+        <a href="/welcom">Home</a>
+    </div>
+
+    <script src="/static/Registration Form/script.js"></script>
+</body>
+
+</html>

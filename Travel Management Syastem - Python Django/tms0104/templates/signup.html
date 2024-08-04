@@ -1,0 +1,91 @@
+{% load static %}
+{% include "header.html" %}
+
+<!-- Registration Start -->
+<div class="container-fluid bg-registration py-5" style="margin: -40px 0;">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer</h6>
+                    <h1 class="text-white"><span class="text-primary">30% OFF</span> For Honeymoon</h1>
+                </div>
+                <p class="text-white">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem
+                    ipsum ut sed eos,
+                    ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+                    dolor</p>
+                <ul class="list-inline text-white m-0">
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam
+                    </li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
+                    <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0">
+                    <div class="card-header bg-primary text-center p-4">
+                        <h1 class="text-white m-0">Registration</h1>
+                    </div>
+                    <div class="card-body rounded-bottom bg-white p-5">
+                        <form action="{% url 'signup' %}" method="POST">
+                            {% csrf_token %}
+
+                            {% for field in form %}
+                                <div class="form-group">
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <p class="text-danger">{{ field.errors|join:", " }}</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+
+
+                            
+                            
+
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {% for error in form.non_field_errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                            <button class="btn btn-primary btn-block py-3" type="submit">Sign Up</button>
+                            <div class="text pt-4">
+                                Already have an account? <a href="{% url 'signin' %}" class="text-decoration-none font-weight">Sign in now</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration End -->
+
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+</body>
+
+</html>

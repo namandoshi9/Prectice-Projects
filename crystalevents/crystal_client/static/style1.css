@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+body {
+    background: #f0f8ff;
+    }
+    .section-padding{
+    padding:20px 0;
+    }
+    .brand-carousel {
+    background: aliceblue;
+    margin-top: 0%;
+    }
+    .owl-dots {
+    text-align: center;
+    margin-top: 4%;
+    }
+    .owl-dot {
+    display: inline-block;
+    height: 15px !important;
+    width: 15px !important;
+    background-color: #878787 !important;
+    opacity: 0.8;
+    border-radius: 50%;
+    margin: 0 5px;
+    }
+    .owl-dot.active {
+    background-color: #000 !important;
+    }
+    

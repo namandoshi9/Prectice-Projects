@@ -1,0 +1,57 @@
+{% load static %}
+{% include "header.html" %}
+
+
+<!-- Package Section Start -->
+<div class="container-fluid">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
+            <h1>Perfect Tour Packages</h1>
+        </div>
+        <div class="row">
+            {% for package in packages %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="package-item bg-white mb-2">
+                    <img class="img-fluid" src="{{ package.image.url }}" alt="">
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ package.name }}</small>
+                            <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{ package.city }}</small>
+                            <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{ package.description }}</small>
+                        </div>
+                        <a class="h5 text-decoration-none">{{ package.start_place }}</a>
+                        <div class="border-top mt-4 pt-4">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="m-0">{{ package.duration_days }}</h5>
+                                <a class="btn btn-primary" href="{% url 'tripDetails' %}">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Package Section End -->
+
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{%static 'lib/easing/easing.min.js"></script>
+<script src="{%static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{%static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+<script src="{%static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+<script src="{%static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<!-- Contact Javascript File -->
+<script src="{%static 'mail/jqBootstrapValidation.min.js' %}"></script>
+<script src="{%static 'mail/contact.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{%static 'js/main.js' %}"></script>
+
+{% include "footer.html" %}

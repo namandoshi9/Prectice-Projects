@@ -1,0 +1,206 @@
+{% load static %}
+{% include "header.html" %}
+
+
+
+
+<div class="container-fluid">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
+            <h1>Perfect Tour Packages</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="package-item bg-white mb-2">
+                    <img class="img-fluid" src="{% static 'img/package-1.jpg' %}" alt="Thailand Package">
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Thailand</small>
+                            <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>3 days</small>
+                            <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                        </div>
+                        <a class="h5 text-decoration-none mt-1" href="#">Manali Kasol</a>
+                        <p class="mt-1">Discover amazing places of the world with us</p>
+                        <div class="border-top mt-2 pt-4">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="m-0">$350</h5>
+                                <button class="btn btn-primary" data-toggle="modal"
+                                    data-target="#bookingModal">Book</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Book Trip to Thailand</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Step 1: Input Details -->
+                <div id="step1" class="step">
+                    <form id="step1Form">
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" id="first_name" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone number</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="showNextStep()">Next</button>
+                    </form>
+                </div>
+
+                <!-- Step 2: More Details -->
+                <div id="step2" class="step" style="display: none;">
+                    <form id="step2Form">
+                        <div class="form-group">
+                            <label for="gender">Gender</label><br>
+                            <label><input type="radio" name="gender" value="male"> Male</label>
+                            <label><input type="radio" name="gender" value="female"> Female</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Age</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob">
+                        </div>
+                        <div class="form-group">
+                            <label for="blood_group">Blood Group</label>
+                            <input type="text" class="form-control" id="blood_group"
+                                placeholder="Enter your blood group">
+                        </div>
+                        <!-- Add more fields as necessary -->
+                        <button type="button" class="btn btn-primary" onclick="showBackStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="showNextStep()">Next</button>
+                    </form>
+                </div>
+
+                <!-- Step 3: More Details -->
+                <div id="step3" class="step" style="display: none;">
+                    <form id="step3Form">
+                        <!-- Add dropdown for ID type -->
+                        <div class="form-group">
+                            <label for="id_type">ID Type</label>
+                            <select class="form-control" id="id_type">
+                                <option value="aadharcard">Aadhar Card</option>
+                                <option value="pancard">PAN Card</option>
+                                <option value="passport">Passport</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_image">Upload ID Image</label>
+                            <input type="file" class="form-control-file" id="id_image">
+                        </div>
+                        <div class="form-group">
+                            <label for="no_of_members">No of Members</label>
+                            <input type="number" class="form-control" id="no_of_members"
+                                placeholder="Enter number of members">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="showBackStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="showNextStep()">Next</button>
+                    </form>
+                </div>
+
+                <!-- Step 4: Payment Details -->
+                <!-- Step 4: Payment Details -->
+                <div id="step4" class="step" style="display: none;">
+                    <form id="step4Form">
+                        <div class="form-group">
+                            <label for="payment_type">Payment Type</label><br>
+                            <label><input type="radio" name="payment_type" value="card"> Card</label>
+                            <label><input type="radio" name="payment_type" value="cash"> Cash</label>
+                            <label><input type="radio" name="payment_type" value="upi"> UPI</label>
+                        </div>
+                        <div id="card_details" style="display: none;">
+                            <div class="form-group">
+                                <label for="card_holder_name">Cardholder Name</label>
+                                <input type="text" class="form-control" id="card_holder_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="card_number">Card Number</label>
+                                <input type="text" class="form-control" id="card_number">
+                            </div>
+                            <div class="form-group">
+                                <label for="card_expiry_cvv">Expiry Date and CVV</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="card_expiry" placeholder="MM/YYYY">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"> </span> <!-- Add space between the inputs -->
+                                    </div>
+                                    <input type="text" class="form-control" id="card_cvv" placeholder="CVV">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="upi_details" style="display: none;">
+                            <div class="form-group">
+                                <label for="upi_id">UPI ID</label>
+                                <input type="text" class="form-control" id="upi_id">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="showBackStep()">Back</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showNextStep() {
+        var currentStep = document.querySelector('.step:not([style*="none"])');
+        currentStep.style.display = 'none';
+        if (currentStep.nextElementSibling) {
+            currentStep.nextElementSibling.style.display = 'block';
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var paymentTypeRadio = document.getElementsByName('payment_type');
+        for (var i = 0; i < paymentTypeRadio.length; i++) {
+            paymentTypeRadio[i].addEventListener('change', function () {
+                var cardDetails = document.getElementById('card_details');
+                var upiDetails = document.getElementById('upi_details');
+                if (this.value === 'card') {
+                    cardDetails.style.display = 'block';
+                    upiDetails.style.display = 'none';
+                } else if (this.value === 'upi') {
+                    cardDetails.style.display = 'none';
+                    upiDetails.style.display = 'block';
+                } else {
+                    cardDetails.style.display = 'none';
+                    upiDetails.style.display = 'none';
+                }
+            });
+        }
+    });
+
+</script>
+
+
+
+{% include "footer.html" %}

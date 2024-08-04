@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+	
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #EEEEEE;
+}
+
+.container{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.container h2{
+    font-size: 2vw;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 40px;
+    letter-spacing: 1.2px;
+}
+
+form{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form select{
+    width: 250px;
+    padding: 15px;
+    padding-left: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 10px 0 rgb(0,0,0,0.25);
+    cursor: pointer;
+    margin: 10px;
+}

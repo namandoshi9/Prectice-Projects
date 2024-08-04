@@ -1,0 +1,4 @@
+// Regex Pattern
+const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+const passPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;

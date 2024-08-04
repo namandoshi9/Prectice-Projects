@@ -1,0 +1,98 @@
+{% load static %}
+{% include "header.html" %}
+
+
+<!-- Video Section Start -->
+<div class="container1">
+    <div class="header-info-par">
+        <h1 class="typewrite">Always say yes to new adventures.</h1>
+        <p>Maybe you can’t buy happiness, but you can buy plane tickets.</p>
+
+    </div>
+    <div class="video">
+        <video id="video" autoplay loop muted>
+            <source src="{% static 'img/travel-video.mp4' %}" type="video/mp4" />
+        </video>
+    </div>
+</div>
+<!-- Video Section End -->
+
+
+
+<!-- Booking Start -->
+<div class="container-fluid booking mt-5 pb-5">
+    <div class="container pb-5">
+        <div class="bg-light shadow" style="padding: 30px;">
+            <div class="row align-items-center" style="min-height: 60px;">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <select class="custom-select px-4" style="height: 47px;">
+                                    <option selected>Destination</option>
+                                    <option value="1">Destination 1</option>
+                                    <option value="2">Destination 1</option>
+                                    <option value="3">Destination 1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <div class="date" id="date1" data-target-input="nearest">
+                                    <input type="text" class="form-control p-4 datetimepicker-input"
+                                        placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <div class="date" id="date2" data-target-input="nearest">
+                                    <input type="text" class="form-control p-4 datetimepicker-input"
+                                        placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <select class="custom-select px-4" style="height: 47px;">
+                                    <option selected>Approx Day</option>
+                                    <option value="1">2 Day & 1 Night</option>
+                                    <option value="2">4 Day & 5 Night</option>
+                                    <option value="3">6 Day & 7 Night</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Find
+                        Trip</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Booking End -->
+
+
+
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+<script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+<script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<!-- Contact Javascript File -->
+<script src="{% static 'mail/jqBootstrapValidation.min.js' %}"></script>
+<script src="{% static 'mail/contact.js' %}"></script>
+
+<!-- Template Javascript -->
+<script src="{% static 'js/main.js' %}"></script>
+
+
+{% include "footer.html" %}

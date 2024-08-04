@@ -1,0 +1,122 @@
+create table users(
+	user_id serial primary key,
+	fname lname
+	username varchar(55),
+	phone varchar(20),
+	email varchar(55),
+	dob date,
+	address varchar(255),
+	userrole varchar(10),
+	idprooftype varchar(20),
+	idproofnumber varchar(20),
+	password varchar(45)
+)
+
+create table cms_page(
+	cms_page_id serial primary key,
+	page_title varchar(45),
+	description varchar(255)
+)
+
+create table transportation(
+	transportation_id serial primary key,
+	transportation_type varchar(10),
+	transportation_details varchar(255)
+)
+
+create table trip_detail(
+	trip_detail_id serial primary key,
+	start_date timestamp,
+	end_date timestamp,
+	cost real,
+	transportation_cost real,
+	tax real,
+	transportation_id int,
+	foreign key (transportation_id) references transportation (transportation_id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+
+create table trip(
+	trip_id serial primary key,
+	start_place varchar(45),
+	end_place varchar(45),
+	no_of_day int,
+	category varchar(45),
+	city varchar(45),
+	cms_page_id int,
+	transportation_id int,
+	trip_detail_id int,
+	foreign key (cms_page_id) references cms_page (cms_page_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (transportation_id) references transportation (transportation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (trip_detail_id) references trip_detail (trip_detail_id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+create table cart(
+	cart_id serial primary key,
+	created_te timestamp,
+	updated_te timestamp,
+	trip_start timestamp,
+	trip_end timestamp,
+	pickup_point varchar(45),
+	drop_point varchar(45),
+	no_of_day int,
+	base_cost real,
+	transportation_cost real,
+	tax real,
+	total_amount real,
+	user_id int,
+	trip_id int,
+	transportation_id int,
+	foreign key (user_id) references users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (transportation_id) references transportation (transportation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (trip_id) references trip (trip_id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+
+create table booking(
+	booking serial primary key,
+	created_te timestamp,
+	updated_te timestamp,
+	trip_start timestamp,
+	trip_end timestamp,
+	pickup_point varchar(45),
+	drop_point varchar(45),
+	no_of_day int,
+	base_cost real,
+	transportation_cost real,
+	tax real,
+	total_amount real,
+	payment_method varchar(10),
+	payment_date timestamp,
+	booking_status varchar(10),
+	refund_amount real,
+	refund_date timestamp,
+	user_id int,
+	trip_id int,
+	transportation_id int,
+	foreign key (user_id) references users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (transportation_id) references transportation (transportation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (trip_id) references trip (trip_id) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+
+create table members(
+	member_id serial primary key,
+	m_name varchar(55),
+	phone varchar(20),
+	email varchar(55),
+	dob date,
+	address varchar(255),
+	idprooftype varchar(20),
+	idproofnumber varchar(20),
+	user_id int,
+	trip_id int,
+	transportation_id int,
+	foreign key (user_id) references users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (transportation_id) references transportation (transportation_id) ON DELETE CASCADE ON UPDATE CASCADE,
+	foreign key (trip_id) references trip (trip_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+
